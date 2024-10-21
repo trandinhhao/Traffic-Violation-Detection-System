@@ -18,7 +18,7 @@
   python webcam.py 
 
   # run inference on image
-  python lp_image.py -i test_image/3.jpg
+  python image.py -i test_image/3.jpg
 ```
 
 ## Result
