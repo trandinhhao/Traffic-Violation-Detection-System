@@ -1,7 +1,7 @@
 # VN License Plate Recognition
 
 ## Installation
-
+- this project using python==3.8.20
 ```bash
   # install env and libraries using conda
   conda create --name env --file requirements.txt
