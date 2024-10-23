@@ -12,6 +12,30 @@
 - **Pretrained model** provided in ./model folder in this repo 
 
 - Yolov5 old version is available in project folder
+- API and Script using Nodejs 20.18.0
+```bash
+  # installs fnm (Fast Node Manager)
+  winget install Schniz.fnm
+  
+  # configure fnm environment
+  fnm env --use-on-cd | Out-String | Invoke-Expression
+  
+  # download and install Node.js
+  fnm use --install-if-missing 20
+  
+  # verifies the right Node.js version is in the environment
+  node -v # should print `v20.18.0`
+  
+  # verifies the right npm version is in the environment
+  npm -v # should print `10.8.2`
+
+  # Sets up the fnm environment to automatically switch Node.js versions when changing directories
+  fnm env --use-on-cd | Out-String | Invoke-Expression
+
+  # Navigates to the project directory where the traffic violation project is located
+  cd traffic-violation-project
+
+```
 
 ## Run License Plate Recognition
 
