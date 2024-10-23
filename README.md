@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Traffic-Violation-Detection-System
 =======
 # VN License Plate Recognition
@@ -28,6 +27,3 @@
 ![Demo 1](result/test1.jpg)
 
 ![Demo 2](result/test2.jpg)
-
-
->>>>>>> huuhieu56
