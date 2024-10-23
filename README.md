@@ -45,6 +45,20 @@
 
   # run inference on image
   python image.py -i test_image/3.jpg
+
+  # Run import script
+  node import.js  # This will import data from the CSV file to the database.
+
+  # Start the server
+  node server.js  # This will start the API server.
+
+  # Test the API
+  You can test whether a license plate exists in the database by sending a GET request to the following endpoint:
+  http://localhost:3000/api/violations/<licensePlate>
+  For example: http://localhost:3000/api/violations/34A8-0963
+
+
+
 ```
 
 ## Result
