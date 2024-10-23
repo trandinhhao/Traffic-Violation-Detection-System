@@ -12,11 +12,15 @@ def check_point_linear(x, y, x1, y1, x2, y2):
     return(math.isclose(y_pred, y, abs_tol = 3))
 
 def check_valid_plate(plate: str) -> bool:
-    length = len(plate)
-    if (length<7 or length >9): return False
-    if (plate[0].isalpha() or plate[1].isalpha() or plate[2].isnumeric()): return False
-    for i in range(4, length):
-        if (plate[i].isalpha()): return False
+    parts = plate.split('-')
+    if len(parts) != 2 or (len(parts[0])!=3 and len(parts[0])!=4) or (len(parts[1])!=4 and len(parts[1])!=5):
+        return False
+    unknown_plate = ["13", "42", "44", "45", "46", "87", "91", "96"]
+    if (parts[0][0].isalpha() or parts[0][1].isalpha() or parts[0][2].isnumeric()): return False
+    for char in parts[1]:
+        if (char.isalpha()): return False
+
+    if parts[0] in unknown_plate: return False
     return True
     
 # detect character and number in license plate
@@ -97,9 +101,11 @@ def read_plate(yolo_license_plate, im):
     license_plate = ""
     if LP_type == "2":
         license_plate = "".join(str(c[2]) for c in sorted(line_1, key=lambda x: x[0]))
-        # license_plate += "-"
+        license_plate += "-"
         license_plate += "".join(str(c[2]) for c in sorted(line_2, key=lambda x: x[0]))
     else:
         license_plate = "".join(str(c[2]) for c in sorted(center_list, key=lambda x: x[0]))
+        license_plate = license_plate[:3]+'-'+license_plate[3:]
+        
     
     return license_plate
