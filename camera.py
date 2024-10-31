@@ -1,20 +1,24 @@
-import os
-os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
-
 from PIL import Image
 import cv2
 import torch
 import math 
 import function.rotate as rotate
 from IPython.display import display
+import os
 import time
 import argparse
 import function.helper as helper
 import csv
 from datetime import datetime
 
+import pathlib
+temp = pathlib.PosixPath
+pathlib.PosixPath = pathlib.WindowsPath
+
 # load model
-yolo_LP_detect = torch.hub.load('yolov5', 'custom', path='model/LP_detector_nano_61.pt', force_reload=True, source='local')
+yolo_LP_detect = torch.hub.load('ultralytics/yolov5', 'custom', path='weights/lp_vn_det_v5s.pt', force_reload=True)
+yolo_license_plate = torch.hub.load('ultralytics/yolov5', 'custom', path='weights/lp_vn_ocr_yolov5m.pt', force_reload=True)
+yolo_license_plate.conf = 0.60
 
 prev_frame_time = 0
 new_frame_time = 0
@@ -40,10 +44,10 @@ while(True):
         lp = ""
         for cc in range(0,2):
             for ct in range(0,2):
-                lp = helper.read_plate_ppocr(rotate.deskew(crop_img, cc, ct))
+                lp = helper.read_plate(yolo_license_plate, rotate.deskew(crop_img, cc, ct))
                 if lp != "unknown":
                     list_read_plates.add(lp)
-                    cv2.putText(frame, lp, (int(plate[0]), int(plate[1]-10)), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,12), 2)
+                    cv2.putText(frame, lp, (int(plate[0]), int(plate[1])), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,12), 2)
                     flag = 1
                     break
             if flag == 1:
