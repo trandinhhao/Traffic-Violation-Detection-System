@@ -17,8 +17,8 @@ pathlib.PosixPath = pathlib.WindowsPath
 
 # load model
 yolo_LP_detect = torch.hub.load('ultralytics/yolov5', 'custom', path='weights/lp_vn_det_v5s.pt', force_reload=True)
-yolo_license_plate = torch.hub.load('ultralytics/yolov5', 'custom', path='weights/lp_vn_ocr_yolov5m.pt', force_reload=True)
-yolo_license_plate.conf = 0.60
+yolo_license_plate = torch.hub.load('ultralytics/yolov5', 'custom', path='weights/lp_vn_ocr_yolov5s_final.pt', force_reload=True)
+yolo_license_plate.conf = 0.80
 
 prev_frame_time = 0
 new_frame_time = 0
@@ -38,8 +38,8 @@ while(True):
         y1 = int(plate[1]) 
         x2 = int(plate[2]) 
         y2 = int(plate[3]) 
-        crop_img = frame[y1:y2, x1:x2]
-        cv2.rectangle(frame, (x1,y1), (x2,y2), color = (0,0,225), thickness = 2)
+        crop_img = helper.crop_expanded_plate(plate_xyxy=(x1, y1, x2, y2), img=frame, expand_ratio=0.15)
+        cv2.rectangle(frame, (x1,y1), (x2,y2), color = (0,0,225), thickness = 1)
         cv2.imwrite("crop.jpg", crop_img)
         lp = ""
         for cc in range(0,2):
@@ -47,7 +47,7 @@ while(True):
                 lp = helper.read_plate(yolo_license_plate, rotate.deskew(crop_img, cc, ct))
                 if lp != "unknown":
                     list_read_plates.add(lp)
-                    cv2.putText(frame, lp, (int(plate[0]), int(plate[1])), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,12), 2)
+                    helper.draw_text(img=frame, text=lp, pos=(x1, y1),  font_thickness=2, text_color=(0,255,0))
                     flag = 1
                     break
             if flag == 1:
