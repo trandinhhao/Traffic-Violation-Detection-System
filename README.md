@@ -1,12 +1,12 @@
-# Traffic-Violation-Detection-System
-=======
 # VN License Plate Recognition
 
 ## Installation
 - this project using python==3.8.20
 ```bash
   # install env and libraries using conda
-  conda create --name env --file requirements.txt
+  conda create --prefix env python==3.8.20
+  conda activate ./env
+  pip install -r requirements.txt
 ```
 
 - **Pretrained model** provided in ./model folder in this repo 
@@ -24,6 +24,8 @@
 ```
 
 ## Result
-![Demo 1](result/test1.jpg)
+![Demo 1](result/a1.jpg)
 
-![Demo 2](result/test2.jpg)
+![Demo 2](result/a2.jpg)
+
+![Demo 3](result/a3.jpg)
