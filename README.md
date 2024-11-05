@@ -11,8 +11,6 @@
 
 - **Pretrained model** provided in ./model folder in this repo 
 
-- Yolov5 old version is available in project folder
-
 ## Run License Plate Recognition
 
 ```bash
