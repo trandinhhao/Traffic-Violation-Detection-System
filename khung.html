@@ -38,4 +38,39 @@
         </div>
     </div>
 </body>
+     <script>
+    
+        document.getElementById('lookup-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const plateNumber = document.getElementById('plate-number').value.trim();
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = "Đang tra c?u...";
+
+            // NHÉT API VÀO
+            fetch(`https://your-api-url.com/lookup?plate=${encodeURIComponent(plateNumber)}`)
+                .then(response => response.json()) 
+                .then(data => {
+                    let resultHtml = `Bi?n s?: ${plateNumber} - Ch? s? h?u: ${data.owner}`;
+
+                    // KI?M TRA L?I VI PH?M
+                    if (data.violations && data.violations.length > 0) {
+                        resultHtml += `<div class="violations"><strong>L?i vi ph?m:</strong><ul>`;
+                        data.violations.forEach(violation => {
+                            resultHtml += `<li>Ngày: ${violation.date} - L? do: ${violation.reason} - Ph?t: ${violation.fine}</li>`;
+                        });
+                        resultHtml += `</ul></div>`;
+                    } else {
+                        resultHtml += `<div class="violations">Không có l?i vi ph?m nào.</div>`;
+                    }
+
+                    resultDiv.innerHTML = resultHtml;
+                })
+                .catch(error => {
+                    resultDiv.textContent = "Không t?m th?y thông tin ho?c đ? có l?i x?y ra.";
+                    console.error('Error:', error);
+                });
+        });
+    </script>
 </html>
