@@ -39,7 +39,7 @@ body {
 .sidebar ul li a {
     text-decoration: none;
     color: white;
-    background-color: #01f964;
+    background-color: #06b039;
     padding: 10px 15px;
     border-radius: 20px;
     display: block;
@@ -51,6 +51,7 @@ body {
 
 .sidebar ul li a:hover {
     background-color: #3c4b9e;
+
     opacity: 1;
 }
 
@@ -70,7 +71,7 @@ body {
 
 .contact-info a {
     text-decoration: none;
-    color: #01f964;
+    color: #010f05;
     font-weight: bold;
 }
 
@@ -112,7 +113,7 @@ input[type="text"] {
 
 button {
     padding: 10px 20px;
-    background-color: #102abb;
+    background-color: #06b039;
     color: rgb(24, 14, 14);
     border: none;
     border-radius: 20px;
