@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra cứu biển số xe và lỗi vi phạm</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Danh mục</h2>
+        <ul>
+            <li><a href="">Trang chủ</a></li>
+            <li><a href="mucphat.html" target="_self">Mức phạt hành chính</a></li>
+            <li><a href="https://kalite.vn/wp-content/uploads/2021/09/maqrkalite.jpg" target="_self">Thanh toán phạt nguội</a></li>
+            <li><a href="#" onclick="goToContact()">Liên hệ khiếu nại</a></li>
+        </ul>
+        <div class="contact-info">
+            <h3>Liên hệ</h3>
+            <p>Hotline cục CSGT: <a href="tel:0123456789">0692342608</a></p>
+            <p>
+                <a href="https://zalo.me/0985263005" target="_blank">
+                    <img src="https://play-lh.googleusercontent.com/rFIOt4fDSCgJh_FkHU2qP8YiZUUhfVoKoNfQFbPEM-Wl8zuyuwn7vzkEx_XMh5B6FfO3" alt="Zalo" style="width: 24px; height: 24px;">
+                    0985263005
+                </a>
+            </p>
+        </div>
+    </div>
+    <div class="main-container">
+        <div class="container">
+            <h1>Tra cứu biển số xe và lỗi vi phạm</h1>
+            <form id="lookup-form">
+                <label for="plate-number">Nhập biển số xe:</label>
+                <input type="text" id="plate-number" name="plate-number" placeholder="VD: 89A-03230" required>
+                <button type="submit">Tra cứu</button>
+            </form>
+            <div id="result"></div>
+        </div>
+    </div>
+</body>
+</html>
