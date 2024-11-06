@@ -11,7 +11,6 @@
 
 - **Pretrained model** provided in ./weights folder in this repo 
 
-
 ## Run License Plate Recognition
 
 ```bash
