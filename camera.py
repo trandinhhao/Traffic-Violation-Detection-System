@@ -105,7 +105,7 @@ while True:
         # except FileNotFoundError:
         #     print("CSV file not found, skipping processing...")
         if flag: 
-            subprocess.run(['python', 'clean_data.py'])
+            subprocess.run(['python', 'clean_and_update_db.py'])
             with open(license_plate_file, mode='w', newline='') as infile:
                 pass 
             flag = 0
